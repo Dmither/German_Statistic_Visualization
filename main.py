@@ -1,43 +1,40 @@
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
 import streamlit as st
-import plotly.express as px
+from general import general
+from demographics import demographics
+from economics import economics
+from socials import socials
+from infrastructure import infrastructure
+from environment import environment
+from climate import climate
 
-from choropleth_map import draw_st_choropleth_map
+if "page" not in st.session_state:
+    st.session_state.page = "General"
 
 
-demographics = pd.read_csv('./germany_states_demographics.csv')
+st.sidebar.header('Menu')
+if st.sidebar.button("General"):
+    st.session_state.page = "General"
+if st.sidebar.button("Demographics"):
+    st.session_state.page = "Demographics"
+if st.sidebar.button("Economics"):
+    st.session_state.page = "Economics"
+if st.sidebar.button("Socials"):
+    st.session_state.page = "Socials"
+if st.sidebar.button("Infrastructure"):
+    st.session_state.page = "Infrastructure"
+if st.sidebar.button("Environment"):
+    st.session_state.page = "Environment"
+if st.sidebar.button("Climate"):
+    st.session_state.page = "Climate"
 
-tab1, tab2, tab3 = st.tabs([
-    'Population',
-    'Population density',
-    'Average age'
-])
 
-with tab1:
-    st.subheader('Population:')
-    population = demographics.sort_values('Population', ascending=False).set_index('State')['Population']
-    fig = px.bar(
-        data_frame=population,
-        y=population.index,
-        x=population.values,
-        labels={"x": "Population", "y": "State"},
-    )
-    fig.update_traces(marker_color="#135FA7")
-    st.plotly_chart(fig)
-    st.dataframe(population)
-
-# Population Density
-with tab2:
-    population_density = demographics.sort_values('Population Density', ascending=False).set_index('State')['Population Density']
-    st.subheader('Population density:')
-    draw_st_choropleth_map(population_density, color='Blues', contrast=1.5, legend_num=10)
-    st.dataframe(population_density)
-
-# Average age
-with tab3:
-    average_age = demographics.sort_values('Average Age', ascending=False).set_index('State')['Average Age']
-    st.subheader('Average age:')
-    draw_st_choropleth_map(average_age, color='Blues', legend_num=7)
-    st.dataframe(average_age)
+pages = {
+    "General": general,
+    "Demographics": demographics,
+    "Economics": economics,
+    "Socials": socials,
+    "Infrastructure": infrastructure,
+    "Environment": environment,
+    "Climate": climate,
+}
+pages[st.session_state.page]()

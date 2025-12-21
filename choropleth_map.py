@@ -1,4 +1,3 @@
-import re
 from typing import Literal
 from lxml import etree
 
@@ -47,7 +46,7 @@ def draw_st_choropleth_map(metric: pd.Series, color:Literal[
 'PuBuGn'
 'BuGn'
 'YlGn'
-]='Greys', contrast:float=1, legend_num:int=5):
+]='Greys', contrast:float=1, legend_num:int=5, legend_points:int=0):
     """
     :param metric: a Series, where index is state and value is a numerical value for this state
     :param color: pick one option, see available colors
@@ -72,7 +71,7 @@ def draw_st_choropleth_map(metric: pd.Series, color:Literal[
     if not 0.5 <= contrast <= 3:
         raise ValueError('Contrast should be between 0.5 and 3 including')
 
-    with open('map.svg', 'r') as file:
+    with open('map_2.svg', 'r') as file:
         map_svg = file.read()
 
     Q1 = metric.quantile(0.25)
@@ -92,10 +91,11 @@ def draw_st_choropleth_map(metric: pd.Series, color:Literal[
 
     legend_html = "<div style='display:flex; align-items:center;'>"
     for color, val in zip(legend_colors[:-1], legend_values[:-1]):
+        val = round(val, legend_points) if legend_points else round(val)
         legend_html += f"""
         <div style='background:{color}; width:80px; height:20px; margin-right:5px; display: flex; align-items: center; justify-content: center;'>
         """
-        legend_html += f"<span style='text-align: center; color:{get_contrast_text_color(color)}'>{val:.0f}</span>"
+        legend_html += f"<span style='text-align: center; color:{get_contrast_text_color(color)}'>{val}</span>"
         legend_html += "</div>"
     legend_html += f"""
             <div style='background:{legend_colors[-1]}; width:80px; height:20px; margin-right:5px; display: flex; align-items: center; justify-content: center;'>
@@ -106,7 +106,8 @@ def draw_st_choropleth_map(metric: pd.Series, color:Literal[
 
     colored_svg = color_svg_paths(map_svg, color_map)
 
-    st.markdown(colored_svg, unsafe_allow_html=True)
+    st.markdown(colored_svg, unsafe_allow_html=True, width='stretch')
     st.text('')
     st.markdown(legend_html, unsafe_allow_html=True)
     st.text('')
+
