@@ -1,5 +1,6 @@
 import re
 from typing import Literal
+from lxml import etree
 
 import numpy as np
 import pandas as pd
@@ -8,20 +9,17 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 
 def color_svg_paths(svg, color_map):
-    states = []
-    for state, color in color_map.items():
-        states.append(state)
-        svg = re.sub(
-            fr'(id="{state}"[^>]*?)\sfill="[^"]*"',
-            fr'\1 fill="{color}"',
-            svg
-        )
-        # Add fill if missing
-        svg = re.sub(
-            fr'(id="{state}"(?![^>]*fill)[^>]*)>',
-            fr'\1 fill="{color}">',
-            svg
-        )
+    root = etree.fromstring(svg.encode())
+    SVG_NS = "http://www.w3.org/2000/svg"
+    NSMAP = {"svg": SVG_NS}
+
+    for path in root.xpath("//svg:path", namespaces=NSMAP):
+        state_id = path.get("id")
+
+        if state_id in color_map:
+            path.set("fill", color_map[state_id])
+
+    svg = etree.tostring(root, encoding="unicode")
     return svg
 
 def get_contrast_text_color(hex_color):
@@ -87,6 +85,7 @@ def draw_st_choropleth_map(metric: pd.Series, color:Literal[
     vmin, vmax = min(values), max(values) / contrast
     norm = mcolors.Normalize(vmin=vmin, vmax=vmax)
     cmap = plt.cm.get_cmap(color)
+    color_map = {state: mcolors.to_hex(cmap(norm(val))) for state, val in dict(zip(metric.index, metric.values)).items()}
 
     legend_values = np.linspace(vmin, vmax, legend_num)
     legend_colors = [mcolors.to_hex(cmap(norm(val))) for val in legend_values]
@@ -105,7 +104,6 @@ def draw_st_choropleth_map(metric: pd.Series, color:Literal[
     legend_html += "</div>"
     legend_html += "</div>"
 
-    color_map = {state: mcolors.to_hex(cmap(norm(val))) for state, val in dict(zip(metric.index, metric.values)).items()}
     colored_svg = color_svg_paths(map_svg, color_map)
 
     st.markdown(colored_svg, unsafe_allow_html=True)
