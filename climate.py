@@ -40,7 +40,7 @@ def climate():
         air = climate.sort_values(
             'Annual_Rain_mm', ascending=False
         ).set_index('State')['Annual_Rain_mm']
-        draw_st_choropleth_map(air, "Oranges", contrast=1, legend_num=10)
+        draw_st_choropleth_map(air, "Blues", contrast=1, legend_num=10)
         st.dataframe(air)
 
     with tab3:
