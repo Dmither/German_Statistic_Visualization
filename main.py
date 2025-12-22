@@ -6,6 +6,7 @@ from socials import socials
 from infrastructure import infrastructure
 from environment import environment
 from climate import climate
+from bonus import bonus
 
 if "page" not in st.session_state:
     st.session_state.page = "General"
@@ -26,6 +27,8 @@ if st.sidebar.button("Environment"):
     st.session_state.page = "Environment"
 if st.sidebar.button("Climate"):
     st.session_state.page = "Climate"
+if st.sidebar.button("Bonus"):
+    st.session_state.page = "Bonus"
 
 
 pages = {
@@ -36,5 +39,6 @@ pages = {
     "Infrastructure": infrastructure,
     "Environment": environment,
     "Climate": climate,
+    "Bonus": bonus,
 }
 pages[st.session_state.page]()

@@ -9,6 +9,12 @@ def environment():
 
     st.header('Environment')
 
+    st.markdown('''
+    * **CO₂ emissions per capita:** ~6.95 t (2023) nationally, with variation across states
+    * **Air quality:** PM2.5 ~7.3 µg/m³ (population-weighted)
+    * **Water quality:** High; >97% of bathing waters meet EU standards
+    ''')
+
     tab1, tab2, tab3 = st.tabs([
         'CO2 emissions',
         'Air quality',

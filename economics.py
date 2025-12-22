@@ -10,6 +10,13 @@ def economics():
 
     st.header('Economics')
 
+    st.markdown('''
+    * **GDP (2024 est.):** ~$5.8 trillion USD (nominal)
+    * **GDP per capita:** ~$69,000 USD
+    * **Major sectors:** Industry (automotive, machinery, chemicals), services, technology, energy
+    * **Exports:** Machinery, vehicles, chemicals, electronics
+    ''')
+
     tab1, tab2, tab3 = st.tabs([
         'GDP',
         'Average income',
@@ -29,8 +36,8 @@ def economics():
         st.plotly_chart(fig)
         st.dataframe(gpd)
 
-        gpd_per_capita = economics.sort_values('GDP_per_capita_EUR', ascending=False).set_index('State')['GDP_per_capita_EUR']
         st.subheader('GDP per capita')
+        gpd_per_capita = economics.sort_values('GDP_per_capita_EUR', ascending=False).set_index('State')['GDP_per_capita_EUR']
         draw_st_choropleth_map(gpd_per_capita, "Greens", legend_num=10)
         st.dataframe(gpd_per_capita)
 

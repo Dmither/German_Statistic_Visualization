@@ -10,6 +10,12 @@ def socials():
 
     st.header('Socials')
 
+    st.markdown('''
+    * **Life expectancy:** ~81 years
+    * **Healthcare:** High-quality universal coverage, strong hospital and doctor density
+    * **Education:** Free primary to tertiary education, strong vocational and technical training system
+    ''')
+
     tab1, tab2, tab3 = st.tabs([
         'Education level',
         'Number of universities',

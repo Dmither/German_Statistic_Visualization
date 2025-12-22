@@ -10,6 +10,12 @@ def infrastructure():
 
     st.header('Infrastructure')
 
+    st.markdown('''
+    * **Transport:** Extensive road network (Autobahnen), high-speed rail (ICE), major ports (Hamburg, Bremen), international airports (Frankfurt, Munich, Berlin)
+    * **Internet:** Widespread broadband, increasing gigabit coverage (~80% households with high-speed connections nationally)
+    * **Energy:** Transitioning to renewables (wind, solar, hydro, biomass), ~54% of electricity from renewables
+    ''')
+
     tab1, tab2 = st.tabs([
         'Internet speed',
         'Hospital beds',

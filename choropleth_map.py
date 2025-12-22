@@ -73,41 +73,44 @@ def draw_st_choropleth_map(metric: pd.Series, color:Literal[
 
     with open('map_2.svg', 'r') as file:
         map_svg = file.read()
-
-    Q1 = metric.quantile(0.25)
-    Q3 = metric.quantile(0.75)
-    IQR = Q3 - Q1
-    values = list(
-        state for state in metric
-        if Q1 - 1.5 * IQR <= state <= Q3 + 1.5 * IQR
-    )
-    vmin, vmax = min(values), max(values) / contrast
-    norm = mcolors.Normalize(vmin=vmin, vmax=vmax)
     cmap = plt.cm.get_cmap(color)
-    color_map = {state: mcolors.to_hex(cmap(norm(val))) for state, val in dict(zip(metric.index, metric.values)).items()}
+    if legend_num > 0:
+        Q1 = metric.quantile(0.25)
+        Q3 = metric.quantile(0.75)
+        IQR = Q3 - Q1
+        values = list(
+            state for state in metric
+            if Q1 - 1.5 * IQR <= state <= Q3 + 1.5 * IQR
+        )
+        vmin, vmax = min(values), max(values) / contrast
+        norm = mcolors.Normalize(vmin=vmin, vmax=vmax)
+        color_map = {state: mcolors.to_hex(cmap(norm(val))) for state, val in dict(zip(metric.index, metric.values)).items()}
 
-    legend_values = np.linspace(vmin, vmax, legend_num)
-    legend_colors = [mcolors.to_hex(cmap(norm(val))) for val in legend_values]
+        legend_values = np.linspace(vmin, vmax, legend_num)
+        legend_colors = [mcolors.to_hex(cmap(norm(val))) for val in legend_values]
 
-    legend_html = "<div style='display:flex; align-items:center;'>"
-    for color, val in zip(legend_colors[:-1], legend_values[:-1]):
-        val = round(val, legend_points) if legend_points else round(val)
-        legend_html += f"""
-        <div style='background:{color}; width:80px; height:20px; margin-right:5px; display: flex; align-items: center; justify-content: center;'>
-        """
-        legend_html += f"<span style='text-align: center; color:{get_contrast_text_color(color)}'>{val}</span>"
-        legend_html += "</div>"
-    legend_html += f"""
-            <div style='background:{legend_colors[-1]}; width:80px; height:20px; margin-right:5px; display: flex; align-items: center; justify-content: center;'>
+        legend_html = "<div style='display:flex; align-items:center;'>"
+        for color, val in zip(legend_colors[:-1], legend_values[:-1]):
+            val = round(val, legend_points) if legend_points else round(val)
+            legend_html += f"""
+            <div style='background:{color}; width:80px; height:20px; margin-right:5px; display: flex; align-items: center; justify-content: center;'>
             """
-    legend_html += f"<span style='text-align: center; color:{get_contrast_text_color(legend_colors[-1])}'>more</span>"
-    legend_html += "</div>"
-    legend_html += "</div>"
+            legend_html += f"<span style='text-align: center; color:{get_contrast_text_color(color)}'>{val}</span>"
+            legend_html += "</div>"
+        legend_html += f"""
+                <div style='background:{legend_colors[-1]}; width:80px; height:20px; margin-right:5px; display: flex; align-items: center; justify-content: center;'>
+                """
+        legend_html += f"<span style='text-align: center; color:{get_contrast_text_color(legend_colors[-1])}'>more</span>"
+        legend_html += "</div>"
+        legend_html += "</div>"
+    else:
+        color_map = {state: mcolors.to_hex(cmap(val)) for state, val in dict(zip(metric.index, metric.values)).items()}
 
     colored_svg = color_svg_paths(map_svg, color_map)
 
     st.markdown(colored_svg, unsafe_allow_html=True, width='stretch')
     st.text('')
-    st.markdown(legend_html, unsafe_allow_html=True)
-    st.text('')
+    if legend_num > 0:
+        st.markdown(legend_html, unsafe_allow_html=True)
+        st.text('')
 

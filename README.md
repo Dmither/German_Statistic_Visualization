@@ -1,101 +1,65 @@
 # German statistic visualization
 
-## Typical metrics for comparing Germany’s states include:
+Мета: побудова і аналіз метрик країни для кожного регіону на прикладі Федеративної республіки Німеччини
 
-### Demographic:
-- Population
-- Population density
-- Age distribution
+## Метрики для країни: 
 
-### Economic
-- GDP / GDP per capita
-- Unemployment rate
-- Average income
+### Важливі примітки: 
 
-### Social
-- Education levels
-- Crime rates
-- Number of universities
+Після Другої світової війни територія Німеччини була поділена між союзними Великою Британією (північний захід), Францією (деякі західні та південно-західні регіони), США (центр та південь) та СРСР (землі на сході).
 
-### Infrastructure
-- Internet speed / broadband coverage
-- Healthcare facilities per capita
+Кожна земля має своє урядування і закони, від яких залежать більшість метрик.
 
-### Environmental
-- CO₂ emissions
-- Share of renewable energy
+Показовими є міста-держави (Берлін, Гамбург, Бремен), які виділяються завдяки високій густині населення і вищому рівні в більшості метрик, як всі великі міста.
 
----
+### Демографія
 
-## **General Information About Germany**
+Включає населення, густоту населення, середній вік.
 
-**Official name:** Federal Republic of Germany (Bundesrepublik Deutschland)
-**Capital:** Berlin
-**Official language:** German
-**Government:** Federal parliamentary republic
-**Area:** ~357,022 km²
-**Population (2025 est.):** ~84 million
-**Currency:** Euro (€)
-**Time zone:** Central European Time (CET, UTC+1)
-**Climate:** Temperate seasonal, with maritime influence in the north and continental in the east/southeast
+Найменша густина населення в регіонах сходу Німеччини, найбільша - в індустріальному заході.
 
-### Economy
+Середній вік найнижчий на півдні та найвищий на сході країни.
 
-* **GDP (2024 est.):** ~$5.8 trillion USD (nominal)
-* **GDP per capita:** ~$69,000 USD
-* **Major sectors:** Industry (automotive, machinery, chemicals), services, technology, energy
-* **Exports:** Machinery, vehicles, chemicals, electronics
+### Економіка
 
-### Infrastructure
+Включає ВВП, ВВП на душу населення, рівень безробіття.
 
-* **Transport:** Extensive road network (Autobahnen), high-speed rail (ICE), major ports (Hamburg, Bremen), international airports (Frankfurt, Munich, Berlin)
-* **Internet:** Widespread broadband, increasing gigabit coverage (~80% households with high-speed connections nationally)
-* **Energy:** Transitioning to renewables (wind, solar, hydro, biomass), ~54% of electricity from renewables
+Найвишим ВВП на душу населення припадає на південні регіони, найбіднішим є схід країни.
 
-### Society & Health
+Середній валовий дохід так само вищий на півдні та нищий на сході, порівняно з середніми показниками.
 
-* **Life expectancy:** ~81 years
-* **Healthcare:** High-quality universal coverage, strong hospital and doctor density
-* **Education:** Free primary to tertiary education, strong vocational and technical training system
+Рівень безробіття найнижчий на півдні, найвищий на сході та в індустріальному регіоні Nordrhein-Westfalen.
 
-### Environment
+### Соціальні метрики
 
-* **CO₂ emissions per capita:** ~6.95 t (2023) nationally, with variation across states
-* **Air quality:** PM2.5 ~7.3 µg/m³ (population-weighted)
-* **Water quality:** High; >97% of bathing waters meet EU standards
+Відсоток вищої освіти досить добре корелює з середнім доходом.
 
----
+Рейтинг злочинності корелює з рівнем безробіття.
 
-## 🗺️ **Germany’s Federal States (Bundesländer)**
+### Інфраструктура
 
-Germany has **16 states**, divided into **three city-states** and **13 territorial states**. Each state has its own government, constitution, and some legislative powers.
+Доступ до Гігабітного інтернету найвищий на півночі та заході, найнищий на півдні.
 
-| #  | State                                  | Capital     | Area (km²) | Population (millions) | Economy                 | Notes                                               |
-| -- | -------------------------------------- | ----------- | ---------- | --------------------- | ----------------------- | --------------------------------------------------- |
-| 1  | Baden-Württemberg                      | Stuttgart   | 35,752     | 11.1                  | Industry & tech hub     | Strong automotive sector (Mercedes, Porsche)        |
-| 2  | Bavaria (Bayern)                       | Munich      | 70,550     | 13.1                  | Industry & tourism      | Home to BMW, Siemens, Alps tourism                  |
-| 3  | Berlin                                 | Berlin      | 891        | 3.8                   | Services & government   | City-state, cultural & political center             |
-| 4  | Brandenburg                            | Potsdam     | 29,476     | 2.5                   | Energy & agriculture    | Surrounds Berlin; coal power historically important |
-| 5  | Bremen                                 | Bremen      | 419        | 0.7                   | Port & trade            | City-state, smallest state by area & population     |
-| 6  | Hamburg                                | Hamburg     | 755        | 1.9                   | Port & logistics        | City-state, major shipping hub                      |
-| 7  | Hesse (Hessen)                         | Wiesbaden   | 21,115     | 6.3                   | Finance & industry      | Frankfurt financial center                          |
-| 8  | Mecklenburg-Vorpommern                 | Schwerin    | 23,180     | 1.6                   | Tourism & agriculture   | Baltic Sea coast, low population density            |
-| 9  | Lower Saxony (Niedersachsen)           | Hanover     | 47,618     | 8.0                   | Industry & agriculture  | Volkswagen HQ in Wolfsburg                          |
-| 10 | North Rhine-Westphalia (NRW)           | Düsseldorf  | 34,112     | 18.0                  | Industry & services     | Most populous, Ruhr industrial region               |
-| 11 | Rhineland-Palatinate (Rheinland-Pfalz) | Mainz       | 19,854     | 4.1                   | Wine & chemicals        | Famous wine regions (Mosel, Rhine)                  |
-| 12 | Saarland                               | Saarbrücken | 2,569      | 0.9                   | Industry                | Small state, steel & automotive industry            |
-| 13 | Saxony (Sachsen)                       | Dresden     | 18,449     | 4.0                   | Industry & technology   | Strong automotive & microelectronics sectors        |
-| 14 | Saxony-Anhalt (Sachsen-Anhalt)         | Magdeburg   | 20,446     | 2.2                   | Chemicals & agriculture | Former East Germany; energy production              |
-| 15 | Schleswig-Holstein                     | Kiel        | 15,802     | 2.9                   | Ports & wind energy     | Between North and Baltic Seas; strong renewables    |
-| 16 | Thuringia (Thüringen)                  | Erfurt      | 16,202     | 2.1                   | Industry & forestry     | Central Germany; historical towns                   |
+Кількість лікарняних ліжок найвища на сході, індустріальному заході та північному регіоні Schleswig-Holstein.
 
----
+### Довкілля
 
-### Key Observations About the States
+Викиди CO₂ на душу населення досить високі в східних регіонах та індустріальному Nordrhein-Westfalen, часто має зворотну кореляцію з густиною населення (одній людини в середньому треба долати меншу відстань на авто тощо).
 
-1. **Population density**: Highest in NRW, Berlin, Hamburg; lowest in Mecklenburg-Vorpommern, Brandenburg.
-2. **Economy**: Industrial powerhouses in Bavaria, Baden-Württemberg, NRW; service & finance in Berlin and Hesse.
-3. **Environment**: CO₂ per capita highest in industrial/coal states (NRW, Brandenburg, Saxony-Anhalt), lowest in city-states (Berlin, Hamburg).
-4. **Infrastructure**: Transport and broadband coverage highest in urbanized and southern states.
-5. **Tourism & natural resources**: Bavaria (Alps), Mecklenburg-Vorpommern (Baltic Sea), Schleswig-Holstein (North Sea), Black Forest in Baden-Württemberg.
+Якість повітря та водойм найкраща на півночі, найгірша - в містах-державах та індустріальному Nordrhein-Westfalen.
 
+### Клімат
+
+Середня температура знижується з півночі на південь з підняттям висотності над рівнем моря. Північні регіони з морським кліматом виділяються найнижчим річним перепадом температури.
+
+Найбагатшими на дощі є південні регіони, найменша кількість - на сході країни.
+
+Середня швидкість вітру рівномірно знижується з півночі на південь.
+
+### Bonus
+
+З густиною населення зменшується середній вік - молодь їде в густонаселені перспективні райони; зростає рівень освіти та злочинності.
+За нижчого середнього віку зростають показники ВВП на душу населення, середня ЗП; рівень злочинності спадає (не дивлячись на густоту населення).
+Злочинність прямо залежить від густоти населення та рівня безробіття.
+
+TODO: Додати ще дві мапи з відсотками українців і москалів для кожного Бундесленду)

@@ -9,6 +9,19 @@ def demographics():
     demographics = pd.read_csv('germany_states_demographics.csv')
 
     st.header('Demographics')
+
+    st.markdown('''
+    * **Total population:** ~84 million
+    * **Median age:** ~45 years
+    * **Fertility rate:** ~1.4 children per woman
+    * **Life expectancy:** ~81 years
+    * **Share aged 65+:** ~22% of population
+    * **Share aged under 15:** ~14%
+    * **Natural population growth:** negative (deaths exceed births)
+    * **Net migration:** positive and the main source of population growth
+    * **Population density:** ~235 inhabitants per km²
+    ''')
+
     tab1, tab2, tab3 = st.tabs([
         'Population',
         'Population density',
