@@ -37,14 +37,14 @@ def demographics():
             x=population.values,
             labels={"x": "Population", "y": "State"},
         )
-        fig.update_traces(marker_color="#FEC95B")
+        fig.update_traces(marker_color="#8CC0DD")
         st.plotly_chart(fig)
         st.dataframe(population)
 
     with tab2:
         population_density = demographics.sort_values('Population Density', ascending=False).set_index('State')['Population Density']
         st.subheader('Population density:')
-        draw_st_choropleth_map(population_density, color='YlOrBr', contrast=1.5, legend_num=10)
+        draw_st_choropleth_map(population_density, color='Blues', contrast=1.5, legend_num=10)
         st.dataframe(population_density)
 
     with tab3:
