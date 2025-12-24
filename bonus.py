@@ -35,12 +35,27 @@ def bonus():
         st.subheader('Heatmap:')
 
         corr = data.corr(numeric_only=True)
+
+        idxs = []
+        for idx in corr.columns:
+            idxs.append(''.join(w[0].upper() for w in idx.replace('_', ' ').split(' ')))
+
         fig = px.imshow(
             corr,
             text_auto=True,
             color_continuous_scale="balance",
             zmin=-1,
             zmax=1
+        )
+        fig.update_layout(
+            margin=dict(l=0, r=0, t=25, b=0),
+            autosize=True,
+            height=400
+        )
+        fig.update_xaxes(
+            tickmode="array",
+            tickvals=list(range(len(idxs))),
+            ticktext=idxs
         )
         st.plotly_chart(fig)
 
