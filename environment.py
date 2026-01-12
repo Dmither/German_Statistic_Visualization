@@ -52,4 +52,4 @@ def environment():
             'Forest_cover_share', ascending=False
         ).set_index('State')['Forest_cover_share']
         draw_st_choropleth_map(forest, "Greens", contrast=1, legend_num=10)
-        st.dataframe(water)
+        st.dataframe(forest)
