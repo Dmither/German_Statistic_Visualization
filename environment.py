@@ -15,10 +15,11 @@ def environment():
     * **Water quality:** High; >97% of bathing waters meet EU standards
     ''')
 
-    tab1, tab2, tab3 = st.tabs([
+    tab1, tab2, tab3, tab4 = st.tabs([
         'CO2 emissions',
         'Air quality',
         'Water quality',
+        'Forest cover'
     ])
 
     with tab1:
@@ -43,4 +44,12 @@ def environment():
             'Bathing_water_excellent_percent', ascending=False
         ).set_index('State')['Bathing_water_excellent_percent']
         draw_st_choropleth_map(water, "Blues", contrast=1, legend_num=10)
+        st.dataframe(water)
+
+    with tab4:
+        st.subheader('Forest cover share (%)')
+        forest = environment.sort_values(
+            'Forest_cover_share', ascending=False
+        ).set_index('State')['Forest_cover_share']
+        draw_st_choropleth_map(forest, "Greens", contrast=1, legend_num=10)
         st.dataframe(water)
