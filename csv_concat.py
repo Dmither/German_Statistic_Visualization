@@ -7,11 +7,11 @@ def csv_concat(path1, path2):
     return data
 
 if __name__ == '__main__':
-    path1 = './germany_states_environment.csv'
-    path2 = './germany_states_forest_cover.csv'
-    res_path = './germany_states_environment.csv'
+    first_path = 'germany_big_cities_density_gdp.csv'
+    second_path = 'germany_big_cities_crime_tourism_rent.csv'
+    res_path = './germany_big_cities.csv'
 
-    data = csv_concat(path1, path2)
+    data = csv_concat(first_path, second_path)
 
     data.to_csv(res_path)
 

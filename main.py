@@ -7,6 +7,7 @@ from infrastructure import infrastructure
 from tourism_rent import tourism_rent
 from environment import environment
 from climate import climate
+from cities import cities
 from bonus import bonus
 
 if "page" not in st.session_state:
@@ -30,6 +31,8 @@ if st.sidebar.button("Environment"):
     st.session_state.page = "Environment"
 if st.sidebar.button("Climate"):
     st.session_state.page = "Climate"
+if st.sidebar.button("Cities"):
+    st.session_state.page = "Cities"
 if st.sidebar.button("Bonus"):
     st.session_state.page = "Bonus"
 
@@ -43,6 +46,7 @@ pages = {
     "Tourism&Rent": tourism_rent,
     "Environment": environment,
     "Climate": climate,
+    "Cities": cities,
     "Bonus": bonus,
 }
 pages[st.session_state.page]()

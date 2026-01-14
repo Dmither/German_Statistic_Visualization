@@ -37,7 +37,7 @@ def demographics():
             x=population.values,
             labels={"x": "Population", "y": "State"},
         )
-        fig.update_traces(marker_color="#8CC0DD")
+        fig.update_traces(marker_color="#58A1CF")
         st.plotly_chart(fig)
         st.dataframe(population)
 

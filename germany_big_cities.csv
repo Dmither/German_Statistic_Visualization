@@ -1,0 +1,12 @@
+City,State,Population_density,GDP_per_capita,Crime_rate,Tourism_pressure,Average_rent
+Berlin,Berlin,4225,45074,14000,9.5,13.51
+Hamburg,Hamburg,2455,70620,8500,8.8,13.0
+München,Bayern,4776,86529,6500,10.2,14.5
+Köln,Nordrhein-Westfalen,2681,61845,12500,8.9,11.5
+Frankfurt am Main,Hessen,3076,97270,14800,11.0,13.8
+Stuttgart,Baden-Württemberg,3021,87513,7100,7.8,12.8
+Düsseldorf,Nordrhein-Westfalen,2859,87338,7500,7.5,12.2
+Leipzig,Sachsen,2021,39695,10800,6.2,8.9
+Dortmund,Nordrhein-Westfalen,2091,41880,9800,5.8,8.7
+Essen,Nordrhein-Westfalen,2755,46673,9200,5.5,8.5
+Bremen,Bremen,1676,54826,14000,6.5,9.2
