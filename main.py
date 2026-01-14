@@ -4,6 +4,7 @@ from demographics import demographics
 from economics import economics
 from socials import socials
 from infrastructure import infrastructure
+from tourism_rent import tourism_rent
 from environment import environment
 from climate import climate
 from bonus import bonus
@@ -23,6 +24,8 @@ if st.sidebar.button("Socials"):
     st.session_state.page = "Socials"
 if st.sidebar.button("Infrastructure"):
     st.session_state.page = "Infrastructure"
+if st.sidebar.button("Tourism&Rent"):
+    st.session_state.page = "Tourism&Rent"
 if st.sidebar.button("Environment"):
     st.session_state.page = "Environment"
 if st.sidebar.button("Climate"):
@@ -37,6 +40,7 @@ pages = {
     "Economics": economics,
     "Socials": socials,
     "Infrastructure": infrastructure,
+    "Tourism&Rent": tourism_rent,
     "Environment": environment,
     "Climate": climate,
     "Bonus": bonus,
